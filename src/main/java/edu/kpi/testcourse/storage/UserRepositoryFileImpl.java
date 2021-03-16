@@ -10,6 +10,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.annotation.Nullable;
 import javax.inject.Inject;
@@ -45,6 +46,12 @@ public class UserRepositoryFileImpl implements UserRepository {
   @Override
   public synchronized @Nullable User findUser(String email) {
     return users.get(email);
+  }
+
+
+  public synchronized List<User> getAllUsers(String email) {
+    // TODO: We should implement it
+    throw new UnsupportedOperationException();
   }
 
   private static Path makeJsonFilePath(Path storageRoot) {

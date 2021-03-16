@@ -1,8 +1,11 @@
 package edu.kpi.testcourse.storage;
 
 import edu.kpi.testcourse.entities.UrlAlias;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.annotation.Nullable;
 
 /**
@@ -26,14 +29,22 @@ public class UrlRepositoryFakeImpl implements UrlRepository {
   }
 
   @Override
-  public void deleteUrlAlias(String email, String alias) {
-    // TODO: We should implement it
-    throw new UnsupportedOperationException();
+  public void deleteUrlAlias(String alias, String email) {
+    aliases.remove(alias);
   }
 
   @Override
   public List<UrlAlias> getAllAliasesForUser(String userEmail) {
-    // TODO: We should implement it
-    throw new UnsupportedOperationException();
+    List returnList = new ArrayList();
+    for(Map.Entry<String, UrlAlias> entry : aliases.entrySet()) {
+      String key = entry.getKey();
+      UrlAlias value = entry.getValue();
+      System.out.println(value);
+      System.out.println(key);
+      if (value.email().equals(userEmail)){
+        returnList.add(key);
+      }
+    }
+    return returnList;
   }
 }

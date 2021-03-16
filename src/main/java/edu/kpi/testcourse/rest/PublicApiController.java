@@ -40,6 +40,7 @@ public class PublicApiController {
    */
   @Post(value = "/users/signup", produces = MediaType.APPLICATION_JSON)
   public HttpResponse<String> signup(UserSignupRequest request) throws JsonProcessingException {
+    System.out.println(request.email());
     try {
       logic.createNewUser(request.email(), request.password());
       return HttpResponse.status(HttpStatus.CREATED);
